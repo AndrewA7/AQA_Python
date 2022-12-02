@@ -1,6 +1,6 @@
 mail = input("Enter mail ")
 
-if "@" and "." in mail:
+if "@" in mail and "." in mail:
     print("YES")
 else:
     print("NO")
