@@ -1,6 +1,6 @@
 my_list = (1, 'qwe', True, 20)
 
-def change(*lst):
+def change(lst):
     new_list = list(lst)
     begining = new_list.pop()
     ending = new_list.pop(0)
@@ -11,5 +11,5 @@ def change(*lst):
 
 
 
-change(1, 'qwe', True, 20)
-change(23,  45, "wergwr", "wfre")
+change([1, 'qwe', True, 20])
+change([23,  45, "wergwr", "wfre"])

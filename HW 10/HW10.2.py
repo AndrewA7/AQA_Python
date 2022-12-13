@@ -1,11 +1,15 @@
-# def for_dict(*lst):
-#     return {element: element for element in lst}
-
 
 def to_dict(lst):
-    my_dict = {}
-    for i in lst:
-        my_dict[i] = i
-    return my_dict
+    try:
+        my_dict = {i: i for i in lst}
+        return my_dict
+    except TypeError:
+        print("Type error")
+        exit()
 
-to_dict(["1", "qwe", "asd", "yrthr", "wtrwtge5hry", "rwtgheytge5tr", "twgerhetyr"])
+
+
+aaa = to_dict(["1", "asd", 23, "yrthr", "wtrwtge5hry", "rwtgheytge5tr", "twgerhetyr"])
+
+print(aaa)
+
