@@ -2,7 +2,6 @@ import pytest
 
 
 @pytest.mark.param
-@pytest.mark.rest
 def test1(package_fixture):
     test_one_data = [2, 4, 6, 8]
     for i in test_one_data:

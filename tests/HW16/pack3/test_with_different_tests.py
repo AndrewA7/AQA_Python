@@ -12,11 +12,11 @@ def test_one_one(test_three_fixture):
 @pytest.mark.pack
 @pytest.mark.rest
 def test_two_two(test_three_fixture):
-    print(f"\nTest 3 started {os.listdir(path='./HW16/pack3')}")
-    for i in os.listdir(path='./HW16/pack3'):
+    print(f"\nTest 2 started {os.listdir(path='./pack3')}")
+    for i in os.listdir(path='./pack3'):
         if i == 'conftest.py' :
             print("\n'conftest.py' is in current dir")
-        assert 'conftest.py' in os.listdir(path='./HW16/pack3')
+        assert 'conftest.py' in os.listdir(path='./pack3')
 
 
 
