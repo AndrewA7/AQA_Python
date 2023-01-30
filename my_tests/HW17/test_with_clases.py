@@ -6,15 +6,9 @@ class TestAllFieldsWithXpath:
     def test_full_name_field(self, get_page):
         driver = get_page
         name = driver.find_element(By.XPATH, data_for_test.FULL_NAME_FIELD)
-        mail = driver.find_element(By.XPATH, data_for_test.EMAIL_FIELD)
-        current_address = driver.find_element(By.XPATH, data_for_test.CURRENT_ADDRESS_FIELD)
-        permanent_address = driver.find_element(By.XPATH, data_for_test.PERMANENT_ADDRESS_FIELD)
         submit = driver.find_element(By.XPATH, data_for_test.SUBMIT_BUTTON)
 
         name.send_keys(data_for_test.user_name)
-        mail.send_keys(data_for_test.user_mail)
-        current_address.send_keys(data_for_test.user_current_address)
-        permanent_address.send_keys(data_for_test.user_permanent_address)
         driver.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
 
@@ -23,16 +17,10 @@ class TestAllFieldsWithXpath:
 
     def test_email_field(self, get_page):
         driver = get_page
-        name = driver.find_element(By.XPATH, data_for_test.FULL_NAME_FIELD)
         mail = driver.find_element(By.XPATH, data_for_test.EMAIL_FIELD)
-        current_address = driver.find_element(By.XPATH, data_for_test.CURRENT_ADDRESS_FIELD)
-        permanent_address = driver.find_element(By.XPATH, data_for_test.PERMANENT_ADDRESS_FIELD)
         submit = driver.find_element(By.XPATH, data_for_test.SUBMIT_BUTTON)
 
-        name.send_keys(data_for_test.user_name)
         mail.send_keys(data_for_test.user_mail)
-        current_address.send_keys(data_for_test.user_current_address)
-        permanent_address.send_keys(data_for_test.user_permanent_address)
         driver.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
 
@@ -41,16 +29,10 @@ class TestAllFieldsWithXpath:
 
     def test_current_address_field(self, get_page):
         driver = get_page
-        name = driver.find_element(By.XPATH, data_for_test.FULL_NAME_FIELD)
-        mail = driver.find_element(By.XPATH, data_for_test.EMAIL_FIELD)
         current_address = driver.find_element(By.XPATH, data_for_test.CURRENT_ADDRESS_FIELD)
-        permanent_address = driver.find_element(By.XPATH, data_for_test.PERMANENT_ADDRESS_FIELD)
         submit = driver.find_element(By.XPATH, data_for_test.SUBMIT_BUTTON)
 
-        name.send_keys(data_for_test.user_name)
-        mail.send_keys(data_for_test.user_mail)
         current_address.send_keys(data_for_test.user_current_address)
-        permanent_address.send_keys(data_for_test.user_permanent_address)
         driver.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
 
@@ -59,15 +41,9 @@ class TestAllFieldsWithXpath:
 
     def test_permanent_address_field(self, get_page):
         driver = get_page
-        name = driver.find_element(By.XPATH, data_for_test.FULL_NAME_FIELD)
-        mail = driver.find_element(By.XPATH, data_for_test.EMAIL_FIELD)
-        current_address = driver.find_element(By.XPATH, data_for_test.CURRENT_ADDRESS_FIELD)
         permanent_address = driver.find_element(By.XPATH, data_for_test.PERMANENT_ADDRESS_FIELD)
         submit = driver.find_element(By.XPATH, data_for_test.SUBMIT_BUTTON)
 
-        name.send_keys(data_for_test.user_name)
-        mail.send_keys(data_for_test.user_mail)
-        current_address.send_keys(data_for_test.user_current_address)
         permanent_address.send_keys(data_for_test.user_permanent_address)
         driver.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
@@ -79,7 +55,7 @@ class TestAllFieldsWithXpath:
 class TestWithWrongMail:
     def test_with_wrong_mail(self, wrong_mail):
         driver = wrong_mail
-        error_field = driver.find_element(By.XPATH, '//input [@class= "mr-sm-2 field-error form-control"]')
+        error_field = driver.find_element(By.XPATH, data_for_test.ANSWER_WRONG_MAIL)
         assert error_field
 
 # ------------------------CSS--------------------------
@@ -90,15 +66,9 @@ class TestAllFieldsWithCss:
     def test_css_full_name_field(self, css_get_page):
         driver = css_get_page
         name = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_FULL_NAME_FIELD)
-        mail = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_EMAIL_FIELD)
-        current_address = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_CURRENT_ADDRESS_FIELD)
-        permanent_address = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_PERMANENT_ADDRESS_FIELD)
         submit = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_SUBMIT_BUTTON)
 
         name.send_keys(data_for_test.user_name)
-        mail.send_keys(data_for_test.user_mail)
-        current_address.send_keys(data_for_test.user_current_address)
-        permanent_address.send_keys(data_for_test.user_permanent_address)
         driver.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
 
@@ -107,16 +77,10 @@ class TestAllFieldsWithCss:
 
     def test_css_email_field(self, css_get_page):
         driver = css_get_page
-        name = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_FULL_NAME_FIELD)
         mail = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_EMAIL_FIELD)
-        current_address = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_CURRENT_ADDRESS_FIELD)
-        permanent_address = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_PERMANENT_ADDRESS_FIELD)
         submit = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_SUBMIT_BUTTON)
 
-        name.send_keys(data_for_test.user_name)
         mail.send_keys(data_for_test.user_mail)
-        current_address.send_keys(data_for_test.user_current_address)
-        permanent_address.send_keys(data_for_test.user_permanent_address)
         driver.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
 
@@ -125,16 +89,10 @@ class TestAllFieldsWithCss:
 
     def test_css_current_address_field(self, css_get_page):
         driver = css_get_page
-        name = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_FULL_NAME_FIELD)
-        mail = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_EMAIL_FIELD)
         current_address = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_CURRENT_ADDRESS_FIELD)
-        permanent_address = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_PERMANENT_ADDRESS_FIELD)
         submit = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_SUBMIT_BUTTON)
 
-        name.send_keys(data_for_test.user_name)
-        mail.send_keys(data_for_test.user_mail)
         current_address.send_keys(data_for_test.user_current_address)
-        permanent_address.send_keys(data_for_test.user_permanent_address)
         driver.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
 
@@ -143,15 +101,9 @@ class TestAllFieldsWithCss:
 
     def test_css_permanent_address_field(self, css_get_page):
         driver = css_get_page
-        name = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_FULL_NAME_FIELD)
-        mail = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_EMAIL_FIELD)
-        current_address = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_CURRENT_ADDRESS_FIELD)
         permanent_address = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_PERMANENT_ADDRESS_FIELD)
         submit = driver.find_element(By.CSS_SELECTOR, data_for_test.CSS_SUBMIT_BUTTON)
 
-        name.send_keys(data_for_test.user_name)
-        mail.send_keys(data_for_test.user_mail)
-        current_address.send_keys(data_for_test.user_current_address)
         permanent_address.send_keys(data_for_test.user_permanent_address)
         driver.execute_script("arguments[0].scrollIntoView();", submit)
         submit.click()
@@ -163,5 +115,5 @@ class TestAllFieldsWithCss:
 class TestWithWrongMailWithCss:
     def test_with_wrong_mail(self, css_wrong_mail):
         driver = css_wrong_mail
-        error_field = driver.find_element(By.CSS_SELECTOR, 'input[class= "mr-sm-2 field-error form-control"]')
+        error_field = driver.find_element(By.CSS_SELECTOR, data_for_test.ANSWER_CSS_WRONG_MAIL)
         assert error_field
