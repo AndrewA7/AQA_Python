@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-
 from . import locators
 
 
@@ -24,15 +23,26 @@ class TestForCheckboxPage:
         for result in result_list:
             assert result in folders_for_select
 
-    def test_checkboxes_two(self, get_checkbox_page, refresh_checkbox_page):
+    def test_checkboxes_two(self, get_checkbox_page):
         folders_for_select = ["Commands", "General", "React"]
         driver = get_checkbox_page
         expand_all = driver.find_element(By.CSS_SELECTOR, locators.EXPAND_ALL_BUTTON)
         expand_all.click()
+        all_folders = driver.find_element(By.XPATH, locators.ALL_FOLDERS).text
+        all_folders_list = all_folders.split()
+        for check_folder in all_folders_list:
+            if check_folder in folders_for_select:
+                select_folder = driver.find_element(By.XPATH, f'//span[contains(text(), "{check_folder}")]')
+                driver.execute_script("arguments[0].scrollIntoView();", select_folder)
+                select_folder.click()
+        result_check_boxes = driver.find_elements(By.XPATH, locators.RESULT_CHECK_BOXES)
+        result_list = []
+        for answer_element in result_check_boxes:
+            result_list.append(answer_element.text.title())
 
-        all_folders_text = driver.find_element(By.XPATH, '//div[@class= "check-box-tree-wrapper"]').text
-        print("----------------------------------")
-        print(all_folders_text)
+        for result in result_list:
+            assert result in folders_for_select
+
 
 class TestRadiobuttonPage:
 
@@ -52,7 +62,6 @@ class TestRadiobuttonPage:
         result_yes_radiobutton_with_answer = driver.find_element(By.XPATH, locators.RADIO_ANSWER).text
         assert result_yes_radiobutton_with_answer == "Yes"
 
-
     def test_get_radio_buttons_info(self, get_radiobutton_page):
         states = {}
         driver = get_radiobutton_page
@@ -66,7 +75,6 @@ class TestRadiobuttonPage:
         print(states)
         return states
 
-
     def test_activate_no_radio(self, get_radiobutton_page):
         driver = get_radiobutton_page
         no_radiobutton_id = driver.find_element(By.XPATH, locators.NO_RADIO_ID_ANSWER)
@@ -77,6 +85,7 @@ class TestRadiobuttonPage:
         result_no_radiobutton = driver.find_element(By.XPATH, locators.NO_RADIO_ID_ANSWER)
         assert result_no_radiobutton.is_selected()
 
+
 class TestForDynamicProperties:
 
     def test_get_id(self, get_dynamic_properties_page, get_text_id):
@@ -85,20 +94,17 @@ class TestForDynamicProperties:
         result_text_field_data = driver.find_element(By.ID, text_field_id).text
         assert "random" in result_text_field_data
 
-
     def test_wait_for_enable_element(self, get_dynamic_properties_page, refresh_dynamic_page):
         driver = get_dynamic_properties_page
         wait = WebDriverWait(driver, 10)
         will_enabled_five_seconds = wait.until((EC.element_to_be_clickable((By.XPATH, locators.ENABLE_AFTER))))
         assert will_enabled_five_seconds.is_enabled() == True
 
-
     def test_wait_for_red_element(self, get_dynamic_properties_page, refresh_dynamic_page):
         driver = get_dynamic_properties_page
         wait = WebDriverWait(driver, 10)
         red_color_text = wait.until(EC.visibility_of_element_located((By.XPATH, locators.TEXT_DANGER)))
         assert red_color_text.is_enabled() == True
-
 
     def test_button_is_present(self, get_dynamic_properties_page, refresh_dynamic_page):
         driver = get_dynamic_properties_page
