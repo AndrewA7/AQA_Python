@@ -28,6 +28,9 @@ def select_folders(driver: WebDriver = None, folders: list = None):
         for folder in folders:
             select_folder(driver, folder, enabled=True)
 
+
 def optimize_test_data(data: list):
     return {'tree': [d.capitalize() for d in data],
             'results': [r.lower() for r in data]}
+
+
