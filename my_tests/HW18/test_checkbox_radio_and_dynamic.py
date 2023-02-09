@@ -19,9 +19,8 @@ class TestForCheckboxPage:
         result_list = []
         for answer_element in result_check_boxes:
             result_list.append(answer_element.text.title())
+        assert sorted(result_list) == sorted(folders_for_select)
 
-        for result in result_list:
-            assert result in folders_for_select
 
     def test_checkboxes_two(self, get_checkbox_page):
         folders_for_select = ["Commands", "General", "React"]
@@ -39,9 +38,7 @@ class TestForCheckboxPage:
         result_list = []
         for answer_element in result_check_boxes:
             result_list.append(answer_element.text.title())
-
-        for result in result_list:
-            assert result in folders_for_select
+        assert sorted(result_list) == sorted(folders_for_select)
 
 
 class TestRadiobuttonPage:
@@ -72,8 +69,7 @@ class TestRadiobuttonPage:
         for i in list(range(elements_ids)):
             states.update({labels[i].text: {'selected': inputs[i].is_selected(),
                                             'enabled': inputs[i].is_enabled()}})
-        print(states)
-        return states
+
 
     def test_activate_no_radio(self, get_radiobutton_page):
         driver = get_radiobutton_page
@@ -90,24 +86,23 @@ class TestForDynamicProperties:
 
     def test_get_id(self, get_dynamic_properties_page, get_text_id):
         driver = get_dynamic_properties_page
-        text_field_id = get_text_id
-        result_text_field_data = driver.find_element(By.ID, text_field_id).text
+        result_text_field_data = driver.find_element(By.ID, get_text_id).text
         assert "random" in result_text_field_data
 
     def test_wait_for_enable_element(self, get_dynamic_properties_page, refresh_dynamic_page):
         driver = get_dynamic_properties_page
         wait = WebDriverWait(driver, 10)
         will_enabled_five_seconds = wait.until((EC.element_to_be_clickable((By.XPATH, locators.ENABLE_AFTER))))
-        assert will_enabled_five_seconds.is_enabled() == True
+        assert will_enabled_five_seconds.is_enabled()
 
     def test_wait_for_red_element(self, get_dynamic_properties_page, refresh_dynamic_page):
         driver = get_dynamic_properties_page
         wait = WebDriverWait(driver, 10)
         red_color_text = wait.until(EC.visibility_of_element_located((By.XPATH, locators.TEXT_DANGER)))
-        assert red_color_text.is_enabled() == True
+        assert red_color_text.is_enabled()
 
     def test_button_is_present(self, get_dynamic_properties_page):
         driver = get_dynamic_properties_page
         wait = WebDriverWait(driver, 10)
         visible_button = wait.until(EC.visibility_of_element_located((By.XPATH, locators.VISIBLE_AFTER)))
-        assert not visible_button.is_displayed == True
+        assert visible_button.is_displayed()
