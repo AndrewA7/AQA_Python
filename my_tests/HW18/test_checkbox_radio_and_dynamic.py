@@ -106,7 +106,7 @@ class TestForDynamicProperties:
         red_color_text = wait.until(EC.visibility_of_element_located((By.XPATH, locators.TEXT_DANGER)))
         assert red_color_text.is_enabled() == True
 
-    def test_button_is_present(self, get_dynamic_properties_page, refresh_dynamic_page):
+    def test_button_is_present(self, get_dynamic_properties_page):
         driver = get_dynamic_properties_page
         wait = WebDriverWait(driver, 10)
         visible_button = wait.until(EC.visibility_of_element_located((By.XPATH, locators.VISIBLE_AFTER)))

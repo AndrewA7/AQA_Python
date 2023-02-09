@@ -43,8 +43,8 @@ def refresh_page(get_radiobutton_page):
 @pytest.fixture(scope="function", autouse=False)
 def refresh_dynamic_page(get_dynamic_properties_page):
     driver = get_dynamic_properties_page
-    driver.refresh()
     yield driver
+    driver.refresh()
 
 
 @pytest.fixture(scope="function", autouse=False)
