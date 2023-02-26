@@ -1,0 +1,7 @@
+# README ))) run script with command "bash third_task_bonus.txt"
+
+pytest -m timed -n10 --dist load --junitxml=./task_three_bonus_result.xml
+allure generate --clean . .
+
+python -m webbrowser http://localhost:63342/QA-git/my_tests/HW19/allure-report/index.html
+

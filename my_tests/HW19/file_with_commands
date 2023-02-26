@@ -1,0 +1,7 @@
+2 task: pytest -m timed -n10 --dist load
+
+3 task: pytest -m timed -n10 --dist load --html=task_three_report.html
+
+3 task bonus: pytest -m timed -n10 --dist load --junitxml=./task_three_result.xml
+              allure generate . .
+
